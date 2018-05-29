@@ -8,6 +8,9 @@
        padding: 6px;
        min-height: 12px;
      }
+     .alterDiv {
+       background-color: blue;
+     }
     </style>
   </head>
 
@@ -17,7 +20,7 @@
     <br />
 
     <div>
-      <label>Input:</label><input />
+      <label>Name:</label><input id="input"><button onclick="submitBtn()">Submit</button>
     </div>
 
     <br />
@@ -28,14 +31,49 @@
         2
         <div>
           3
-          <div>
+          <div id="numberFour">
             4
-            <div>
+            <div id="test">
               5
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div id="confirm">
+      
+    </div>
+    <script>
+      const test = document.getElementById('test');
+      const numberFour = document.getElementById('numberFour');
+      test.addEventListener('click', function(){
+        if(parseInt(numberFour.innerHTML) === 4){
+          test.innerHTML = "Changed";
+          setTimeout(function(){
+            test.innerHTML = "5";
+          }, 500);
+        } else {
+          test.innerHTML = "Not Today!"
+          setTimeout(function(){
+            test.innerHTML = "5";
+          }, 500);
+        }
+        });
+        test.addEventListener('mouseover', function(){
+          test.classList.add('alterDiv');
+        })
+        test.addEventListener('mouseout', function(){
+          test.classList.remove('alterDiv')
+        })
+        function submitBtn(){
+          const confirm = document.getElementById('confirm');
+          let name = document.getElementById('input').value;
+          confirm.innerText = `Hello ${name}, thank you for submitting`;
+          setTimeout(function(){
+            confirm.innerText = ``;
+          }, 2000);
+        }
+        
+    </script>
   </body>
 </html>
